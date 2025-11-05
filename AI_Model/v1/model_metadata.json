@@ -1,0 +1,137 @@
+{
+    "project_info": {
+        "name": "Ship Delivery Delay Prediction",
+        "version": "2.0",
+        "date_created": "2025-10-27 13:17:21",
+        "description": "ML + Deep Learning pipeline for maritime logistics"
+    },
+    "data_info": {
+        "total_samples": 20000,
+        "train_samples": 12800,
+        "val_samples": 3200,
+        "test_samples": 4000,
+        "delay_rate": 0.36365,
+        "num_features": 33,
+        "numeric_features": [
+            "vessel_capacity_teu",
+            "distance_nautical_miles",
+            "fuel_consumption_tons_day",
+            "cargo_weight_tons",
+            "cargo_utilization_pct",
+            "weather_risk_score",
+            "origin_port_congestion",
+            "dest_port_congestion",
+            "customs_complexity_score",
+            "fuel_price_index",
+            "freight_rate_index",
+            "safety_inspection_score",
+            "has_hazardous_cargo",
+            "is_peak_season",
+            "vessel_efficiency",
+            "route_complexity",
+            "port_total_congestion",
+            "maintenance_risk",
+            "is_weekend_departure",
+            "high_utilization",
+            "weather_sea_risk"
+        ],
+        "categorical_features": [
+            "vessel_type",
+            "origin_port",
+            "destination_port",
+            "season",
+            "sea_state",
+            "departure_day",
+            "age_category"
+        ]
+    },
+    "traditional_ml": {
+        "best_model": "Decision Tree",
+        "best_params": {
+            "classifier__max_depth": "20",
+            "classifier__min_samples_leaf": "1",
+            "classifier__min_samples_split": "2",
+            "classifier__n_estimators": "100"
+        },
+        "test_metrics": {
+            "accuracy": 0.646,
+            "precision": 0.5371428571428571,
+            "recall": 0.19381443298969073,
+            "f1_score": 0.28484848484848485,
+            "roc_auc": 0.6265078754244898
+        }
+    },
+    "deep_learning": {
+        "models": [
+            {
+                "name": "ResNet",
+                "test_metrics": {
+                    "accuracy": 0.64175,
+                    "precision": 0.516566265060241,
+                    "recall": 0.23573883161512027,
+                    "f1_score": 0.32373761208117036,
+                    "roc_auc": 0.6384787907020707
+                }
+            },
+            {
+                "name": "Simple NN",
+                "test_metrics": {
+                    "accuracy": 0.65075,
+                    "precision": 0.5638766519823789,
+                    "recall": 0.1759450171821306,
+                    "f1_score": 0.2682032477737035,
+                    "roc_auc": 0.6402870664803301
+                }
+            },
+            {
+                "name": "Deep NN",
+                "test_metrics": {
+                    "accuracy": 0.64425,
+                    "precision": 0.562015503875969,
+                    "recall": 0.09965635738831616,
+                    "f1_score": 0.1692936368943374,
+                    "roc_auc": 0.6130149406895807
+                }
+            }
+        ]
+    },
+    "ensemble": {
+        "strategies": [
+            {
+                "Ensemble Type": "Simple Average",
+                "Accuracy": 0.64725,
+                "Precision": 0.5614525139664804,
+                "Recall": 0.13814432989690723,
+                "F1 Score": 0.22173193601765032,
+                "AUC": 0.6452822392805785
+            },
+            {
+                "Ensemble Type": "Weighted Average",
+                "Accuracy": 0.64775,
+                "Precision": 0.5653409090909091,
+                "Recall": 0.13676975945017184,
+                "F1 Score": 0.22025456557830658,
+                "AUC": 0.6449192878698884
+            },
+            {
+                "Ensemble Type": "Majority Voting",
+                "Accuracy": 0.64575,
+                "Precision": 0.5633333333333334,
+                "Recall": 0.1161512027491409,
+                "F1 Score": 0.1925925925925926,
+                "AUC": 0.6452822392805785
+            }
+        ]
+    },
+    "final_model": {
+        "name": "ResNet (Deep Learning)",
+        "type": "DL",
+        "test_metrics": {
+            "accuracy": 0.64175,
+            "precision": 0.516566265060241,
+            "recall": 0.23573883161512027,
+            "f1_score": 0.32373761208117036,
+            "roc_auc": 0.6384787907020707
+        }
+    }
+}
